@@ -6,10 +6,10 @@ namespace homework
     {
         static void Main(string[] args)
         {
-            PrintDigitsInWordsPart2("5679");
-            // EnterAnyKeybordKey();
+            //PrintNumberInWords("5679");
+            EnterAnyKeybordKey();
         }
-        public static void PrintDigitsInWordsPart1(char liczba)
+        public static void PrintDigitInWord(char liczba)
         {
 
             switch (liczba)
@@ -50,29 +50,33 @@ namespace homework
             }
         }
 
-        public static void PrintDigitsInWordsPart2(string liczba)
+        public static void PrintNumberInWords(string liczba)
         {
             for (int i = 0; i < liczba.Length; i++)
             {
-                PrintDigitsInWordsPart1(liczba[i]);
+                PrintDigitInWord(liczba[i]);
             }
         }
         public static void EnterAnyKeybordKey()
         {
             Console.WriteLine("Please,enter any keybord key");
-            char output = Convert.ToChar(Console.ReadLine());
+            char output = Console.ReadKey().KeyChar;
 
+            while (output != 'Q' && output != 'q')
+            {
+                int ascii = output;
+                Console.WriteLine();
+                Console.WriteLine($"The ASCII value of {output} is {ascii}.");
+                Console.WriteLine("Please,enter any keybord key");
+                output = Console.ReadKey().KeyChar;
+
+
+            }
             if (output == 'Q' || output == 'q')
             {
                 Environment.Exit(0);
                 //lub return;
             }
-            else
-            {
-                int ascii = output;
-                Console.WriteLine($"The ASCII value of {output} is {ascii}.");
-            }
-
         }
 
 
